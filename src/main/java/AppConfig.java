@@ -8,11 +8,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-	@Bean(name = "service")
-	public CustomerService  getCustomerService() {
-		final CustomerServiceImpl service = new CustomerServiceImpl();
-		service.setCustomerRepository(getCustomerRepository());
-		return service;
+	// setter injection
+//	@Bean(name = "service")
+//	public CustomerService  getCustomerService() {
+//		final CustomerServiceImpl service = new CustomerServiceImpl();
+//		service.setCustomerRepository(getCustomerRepository());
+//		return service;
+//	}
+
+	// constructor injection
+	@Bean("service")
+	public CustomerService getCustomerService() {
+		return new CustomerServiceImpl(getCustomerRepository());
 	}
 
 	@Bean(name = "repository")
