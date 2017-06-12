@@ -1,11 +1,14 @@
 import com.pluralsight.service.CustomerService;
-import com.pluralsight.service.CustomerServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Application {
 
 	public static void main(final String[] args) {
 
-		final CustomerService service = new CustomerServiceImpl();
+		final ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		final CustomerService service = ctx.getBean("service", CustomerService.class);
 
 		System.out.println(service.findAll().get(0).getFirstName());
 	}
