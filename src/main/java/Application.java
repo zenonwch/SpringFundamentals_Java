@@ -8,7 +8,8 @@ public class Application {
 
 		final ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		final CustomerService service = ctx.getBean("service", CustomerService.class);
+//		final CustomerService service = ctx.getBean("service", CustomerService.class);
+		final CustomerService service = ctx.getBean("customerService", CustomerService.class);
 
 		System.out.println(service.findAll().get(0).getFirstName());
 	}

@@ -3,10 +3,18 @@ import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
 import com.pluralsight.service.CustomerService;
 import com.pluralsight.service.CustomerServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan("com.pluralsight")
 public class AppConfig {
+
+	// autowire (member, setter, constructor injections)
+//	@Bean("service")
+//	public CustomerService getCustomerService() {
+//		return new CustomerServiceImpl();
+//	}
 
 	// setter injection
 //	@Bean(name = "service")
@@ -17,13 +25,13 @@ public class AppConfig {
 //	}
 
 	// constructor injection
-	@Bean("service")
-	public CustomerService getCustomerService() {
-		return new CustomerServiceImpl(getCustomerRepository());
-	}
+//	@Bean("service")
+//	public CustomerService getCustomerService() {
+//		return new CustomerServiceImpl(getCustomerRepository());
+//	}
 
-	@Bean(name = "repository")
-	public CustomerRepository getCustomerRepository() {
-		return new HibernateCustomerRepositoryImpl();
-	}
+//	@Bean(name = "repository")
+//	public CustomerRepository getCustomerRepository() {
+//		return new HibernateCustomerRepositoryImpl();
+//	}
 }
