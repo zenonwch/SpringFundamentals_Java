@@ -10,6 +10,9 @@ public class Application {
 
 //		final CustomerService service = ctx.getBean("service", CustomerService.class);
 		final CustomerService service = ctx.getBean("customerService", CustomerService.class);
+		System.out.println(service);
+		final CustomerService service2 = ctx.getBean("customerService", CustomerService.class);
+		System.out.println(service2);
 
 		System.out.println(service.findAll().get(0).getFirstName());
 	}
