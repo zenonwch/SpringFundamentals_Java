@@ -1,37 +1,15 @@
-import com.pluralsight.repository.CustomerRepository;
-import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
-import com.pluralsight.service.CustomerService;
-import com.pluralsight.service.CustomerServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan("com.pluralsight")
+@PropertySource("app.properties")
 public class AppConfig {
-
-	// autowire (member, setter, constructor injections)
-//	@Bean("service")
-//	public CustomerService getCustomerService() {
-//		return new CustomerServiceImpl();
-//	}
-
-	// setter injection
-//	@Bean(name = "service")
-//	public CustomerService  getCustomerService() {
-//		final CustomerServiceImpl service = new CustomerServiceImpl();
-//		service.setCustomerRepository(getCustomerRepository());
-//		return service;
-//	}
-
-	// constructor injection
-//	@Bean("service")
-//	public CustomerService getCustomerService() {
-//		return new CustomerServiceImpl(getCustomerRepository());
-//	}
-
-//	@Bean(name = "repository")
-//	public CustomerRepository getCustomerRepository() {
-//		return new HibernateCustomerRepositoryImpl();
-//	}
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 }
